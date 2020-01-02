@@ -55,6 +55,9 @@ class CCWelcom extends Component {
                 <Link to={'/main/'+this.state.FromAge+'/'+this.state.ToAge+'/'+this.state.gender}>
                     <Button variant='primary'>go</Button>
                 </Link>
+                <Link to={'/favorite'}>
+                    <Button variant='secondary'>favorite</Button>
+                </Link>
 
             </div >
         );

@@ -5,7 +5,6 @@ import {
     BrowserRouter as Router,
     withRouter
 } from "react-router-dom";
-import { parse } from 'querystring'
 
 class CCMain extends Component {
     constructor(props) {
@@ -18,7 +17,7 @@ class CCMain extends Component {
         console.log(this.props.match.params.fromage)
         console.log(this.props.match.params.toage)
         console.log(this.props.match.params.gender)
-        this.apiUrl = `http://localhost:61990/api/User`;
+        this.apiUrl = `http://proj.ruppin.ac.il/igroup20/Mobile/server/api/User`;
     }
 
     componentDidMount() {
@@ -71,6 +70,7 @@ class CCMain extends Component {
             return (<div>
                 <CCUser  userslist={this.state.userslist} />
             </div>
+            
             );
         }
         else return (<div></div>)

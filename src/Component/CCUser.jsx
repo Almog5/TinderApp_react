@@ -10,7 +10,7 @@ class CCUser extends Component {
             users: this.props.userslist,
             count: 0
         }
-        this.apiUrl = `http://localhost:61990/api/User`;
+        this.apiUrl = `http://proj.ruppin.ac.il/igroup20/Mobile/server/api/User`;
     }
     next = () => {
         if (this.state.count < this.state.users.length - 1) {
@@ -18,6 +18,15 @@ class CCUser extends Component {
                 count: prev.count + 1
             }), () => { console.log(this.state.count + 1); console.log(this.state.users.length) })
         }
+        else alert("no more matches for you")
+    }
+    back = () => {
+        if (this.state.count > 0) {
+            this.setState((prev) => ({
+                count: prev.count - 1
+            }), () => { console.log(this.state.count); console.log(this.state.users.length) })
+        }
+        else alert("no more backward")
     }
 
     like = () => {
@@ -45,6 +54,7 @@ class CCUser extends Component {
                 (error) => {
                     console.log("err post=", error);
                 });
+                this.next();
     }
 
 
@@ -53,12 +63,12 @@ class CCUser extends Component {
 
         //console.log(u)
         //console.log(this.state.users)
-        if (this.state.users[this.state.count].premium === true)
+        if (this.state.users[this.state.count].Premium === true)
             return (
-                <div><CCPremium user={this.state.users[this.state.count]} like={this.like} next={this.next} /></div>
+                <div><CCPremium user={this.state.users[this.state.count]} like={this.like} next={this.next} back={this.back} /></div>
             )
         else return (
-            <div><CCProfile user={this.state.users[this.state.count]} like={this.like} next={this.next} /></div>
+            <div><CCProfile user={this.state.users[this.state.count]} like={this.like} next={this.next} back={this.back} /></div>
         )
     }
     /*return (
